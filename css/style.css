@@ -454,3 +454,44 @@ body.dark .feature {
 .footer a:hover {
     opacity: 0.85;
 }
+/* ============================= */
+/* DARK MODE – STEP BY STEP FIX */
+/* ============================= */
+
+body.dark .steps-card {
+    background: #020617;
+    border-left-color: #2563eb;
+}
+
+body.dark .steps-header h3 {
+    color: #f8fafc;
+}
+
+/* Step blocks */
+body.dark .steps-container p {
+    background: #0f172a;
+    color: #e5e7eb;
+    border: 1px solid #1e293b;
+}
+
+/* Alternate step background */
+body.dark .steps-container p:nth-child(even) {
+    background: #020617;
+}
+
+/* Expression / rule text */
+body.dark .steps-container p strong {
+    color: #93c5fd;
+}
+
+/* Final Answer highlight */
+body.dark .steps-container .final-answer {
+    background: #064e3b;
+    color: #ecfdf5;
+    border-color: #065f46;
+}
+
+/* Placeholder text */
+body.dark .steps-placeholder {
+    color: #94a3b8;
+}
