@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Basic Calculator | CalcVerse Pro</title>
+
+    <meta name="description" content="Use CalcVerse Pro Basic Calculator to perform fast and accurate calculations with educational explanations." />
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1>CalcVerse Pro</h1>
+        <p class="tagline">Basic Educational Calculator</p>
+
+        <!-- ✅ DARK MODE BUTTON (TOP RIGHT) -->
+        <button id="themeToggle" class="theme-toggle header-toggle">
+            🌙 Dark
+        </button>
+    </header>
+
+    <!-- CALCULATOR CONTAINER -->
+    <main class="calculator-page">
+
+        <div class="calculator">
+
+            <!-- DISPLAY -->
+            <div class="display">
+                <div class="expression" id="expression">0</div>
+                <div class="result" id="result">0</div>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="buttons">
+
+                <button class="btn control">C</button>
+                <button class="btn control">CE</button>
+                <button class="btn control">±</button>
+                <button class="btn operator">÷</button>
+
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn operator">×</button>
+
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn operator">−</button>
+
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn operator">+</button>
+
+                <button class="btn">0</button>
+                <button class="btn">%</button>
+                <button class="btn">.</button>
+                <button class="btn equal">=</button>
+
+            </div>
+
+        </div>
+
+        <!-- SIDE PANEL -->
+        <aside class="side-panel">
+
+            <!-- STEP BY STEP -->
+            <div class="card steps-card">
+                <div class="steps-header">
+                    <h3>📘 Step-by-Step Explanation</h3>
+                    <button id="toggleSteps" class="toggle-btn">Show Steps</button>
+                </div>
+
+                <div class="steps-container hidden" id="steps">
+                    <p class="steps-placeholder">
+                        Perform a calculation to see step-by-step explanation.
+                    </p>
+                </div>
+            </div>
+
+            <!-- HISTORY -->
+            <div class="card">
+                <h3>🕘 Recent Calculations</h3>
+                <ul id="history">
+                    <li>No calculations yet</li>
+                </ul>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 CalcVerse Pro</p>
+    </footer>
+
+    <script src="js/basic-calculator.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/basic-calculator.js"></script>
+
+</body>
+</html>
