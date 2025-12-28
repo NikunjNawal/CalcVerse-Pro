@@ -376,3 +376,81 @@ body.dark .hero p,
 body.dark .upcoming li {
     color: #d1d5db;
 }
+/* ============================= */
+/* DARK MODE – COMING SOON FIX */
+/* ============================= */
+
+body.dark .upcoming {
+    background: #020617;   /* same as other dark cards */
+}
+
+body.dark .upcoming h2 {
+    color: #e5e7eb;
+}
+
+body.dark .upcoming li {
+    color: #d1d5db;
+}
+/* ============================= */
+/* DARK MODE – HERO FIX */
+/* ============================= */
+
+body.dark .hero {
+    background: #0f172a;
+}
+
+body.dark .hero h2 {
+    color: #f8fafc;
+}
+
+body.dark .hero p {
+    color: #cbd5f5;
+}
+
+body.dark .btn-primary {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+body.dark .btn-primary:hover {
+    background: #1e40af;
+}
+/* ============================= */
+/* DARK MODE – FOOTER FIX */
+/* ============================= */
+
+body.dark .footer {
+    background: #020617;
+    color: #e5e7eb;
+}
+
+body.dark .footer-links a {
+    color: #94a3b8;
+}
+
+body.dark .footer-links a:hover {
+    color: #ffffff;
+}
+/* ============================= */
+/* DARK MODE – SMOOTH SECTIONS */
+/* ============================= */
+
+body.dark .features {
+    background: #020617;
+}
+
+body.dark .feature {
+    background: #020617;
+    border: 1px solid #1e293b;
+}
+/* ============================= */
+/* FEEDBACK LINK */
+/* ============================= */
+
+.footer a {
+    font-weight: 500;
+}
+
+.footer a:hover {
+    opacity: 0.85;
+}
