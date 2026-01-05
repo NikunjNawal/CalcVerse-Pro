@@ -157,6 +157,30 @@ body {
 }
 
 /* ============================= */
+/* SCIENTIFIC CALCULATOR */
+/* ============================= */
+.scientific-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.scientific-buttons.hidden {
+    display: none;
+}
+
+.sci {
+    background: #e0f2fe;
+    color: #075985;
+    font-weight: bold;
+}
+
+.sci:hover {
+    background: #bae6fd;
+}
+
+/* ============================= */
 /* SIDE PANEL */
 /* ============================= */
 .side-panel {
@@ -273,6 +297,15 @@ body.dark .btn {
 
 body.dark .operator {
     background: #1e40af;
+}
+
+body.dark .sci {
+    background: #1e3a8a;
+    color: #e0e7ff;
+}
+
+body.dark .sci:hover {
+    background: #1d4ed8;
 }
 
 body.dark .footer {

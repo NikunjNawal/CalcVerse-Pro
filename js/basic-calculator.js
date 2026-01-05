@@ -1,79 +1,72 @@
-// CalcVerse Pro - Basic Calculator (Final Working Version)
+// CalcVerse Pro - BASIC Calculator (Final Stable Version + Dark Mode FIXED)
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("CalcVerse Pro JS Loaded ✅");
-     
-    const stepsEl = document.getElementById("steps");
+    console.log("CalcVerse Pro Basic JS Loaded ✅");
+
+    /* ==============================
+       DOM ELEMENTS
+    ============================== */
     const expressionEl = document.getElementById("expression");
     const resultEl = document.getElementById("result");
     const historyEl = document.getElementById("history");
-    const buttons = document.querySelectorAll(".btn");
+    const stepsEl = document.getElementById("steps");
     const toggleBtn = document.getElementById("toggleSteps");
     const themeToggle = document.getElementById("themeToggle");
+    const buttons = document.querySelectorAll(".btn");
 
-
-
-    let expression = "";
-    let history = [];
-
-    if (!buttons.length) {
-        console.error("Buttons not found ❌");
+    // ❗ SAFETY CHECK
+    if (!themeToggle) {
+        console.error("❌ Dark mode button not found (id='themeToggle')");
         return;
     }
 
-    // ==============================
-    // Button Click Handling
-    // ==============================
+    let expression = "0";
+    let history = [];
+    let stepsVisible = false;
+
+    /* ==============================
+       BUTTON HANDLING
+    ============================== */
     buttons.forEach(btn => {
         btn.addEventListener("click", () => {
-            const value = btn.innerText.trim();
-            handleInput(value);
+            handleInput(btn.innerText.trim());
         });
     });
 
     function handleInput(value) {
         if (value === "C") return clearAll();
         if (value === "CE") return clearEntry();
-        if (value === "⌫") return backspace();
-        if (value === "=") return calculate();
-        if (value === "%") return percentage();
         if (value === "±") return toggleSign();
+        if (value === "%") return percentage();
+        if (value === "=") return calculate();
 
         append(value);
     }
 
-    // ==============================
-    // Core Functions
-    // ==============================
+    /* ==============================
+       CORE CALCULATOR LOGIC
+    ============================== */
     function append(value) {
-        const lastChar = expression.slice(-1);
-        if (isOperator(lastChar) && isOperator(value)) return;
+        const last = expression.slice(-1);
 
-        expression += value;
-        updateDisplay();
-    }
+        // Prevent leading zero like 09, 04
+        if (expression === "0" && !isOperator(value) && value !== ".") {
+            expression = value;
+        }
+        // Prevent multiple operators
+        else if (isOperator(last) && isOperator(value)) {
+            return;
+        }
+        else {
+            expression += value;
+        }
 
-    function clearAll() {
-        expression = "";
-        resultEl.textContent = "0";
-        updateDisplay();
-    }
-
-    function clearEntry() {
-        if (!expression) return;
-        expression = expression.replace(/(-?\d+\.?\d*)$/, "");
-
-        updateDisplay();
-    }
-
-    function backspace() {
-        expression = expression.slice(0, -1);
         updateDisplay();
     }
 
     function calculate() {
-        if (!expression) return;
+        if (!expression || expression === "0") return;
 
         try {
             const safeExp = expression
@@ -87,178 +80,158 @@ document.addEventListener("DOMContentLoaded", () => {
 
             addToHistory(expression, result);
             generateSteps(expression, result);
+
             expression = result.toString();
             resultEl.textContent = result;
             updateDisplay();
 
-        } catch {
+            // Auto-show steps
+            stepsVisible = true;
+            stepsEl.classList.remove("hidden");
+            toggleBtn.textContent = "Hide Steps";
+
+        } catch (err) {
+            console.error("Calculation error:", err);
             resultEl.textContent = "Error";
         }
     }
 
+    function clearAll() {
+        expression = "0";
+        resultEl.textContent = "0";
+        updateDisplay();
+
+        stepsEl.innerHTML = `
+            <p class="steps-placeholder">
+                Perform a calculation to see step-by-step explanation.
+            </p>
+        `;
+    }
+
+    function clearEntry() {
+        expression = expression.slice(0, -1) || "0";
+        updateDisplay();
+    }
+
     function updateDisplay() {
-        expressionEl.textContent = expression || "0";
+        expressionEl.textContent = expression;
     }
 
-    function isOperator(char) {
-        return ["+", "−", "×", "÷"].includes(char);
+    function isOperator(ch) {
+        return ["+", "−", "×", "÷"].includes(ch);
     }
 
-    // ==============================
-    // Percentage (%) Logic
-    // ==============================
+    /* ==============================
+       EXTRA FUNCTIONS
+    ============================== */
     function percentage() {
-        if (!expression) return;
-
-        const match = expression.match(/(-?\d+\.?\d*)$/);
-        if (!match) return;
-
-        const number = match[0];
-        const percentValue = parseFloat(number) / 100;
-
-        expression = expression.replace(/(-?\d+\.?\d*)$/, percentValue);
+        expression = expression.replace(
+            /(-?\d+\.?\d*)$/,
+            m => parseFloat(m) / 100
+        );
         updateDisplay();
     }
 
-    // ==============================
-    // Plus / Minus (±) Logic
-    // ==============================
     function toggleSign() {
-        if (!expression) return;
-
-        const match = expression.match(/(-?\d+\.?\d*)$/);
-        if (!match) return;
-
-        const number = match[0];
-        const toggled = (-parseFloat(number)).toString();
-
-        expression = expression.replace(/(-?\d+\.?\d*)$/, toggled);
+        expression = expression.replace(
+            /(-?\d+\.?\d*)$/,
+            m => (-parseFloat(m)).toString()
+        );
         updateDisplay();
     }
 
-    // ==============================
-    // History
-    // ==============================
+    /* ==============================
+       HISTORY
+    ============================== */
     function addToHistory(exp, res) {
         history.unshift(`${exp} = ${res}`);
         if (history.length > 5) history.pop();
-        renderHistory();
+        historyEl.innerHTML = history.map(h => `<li>${h}</li>`).join("");
     }
 
-    function renderHistory() {
-        historyEl.innerHTML = "";
-        history.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = item;
-            historyEl.appendChild(li);
-        });
-    }
-
-    // ==============================
-    // Keyboard Support
-    // ==============================
-    document.addEventListener("keydown", (e) => {
-        const key = e.key;
-
-        if (!isNaN(key)) append(key);
-        else if (key === "+") append("+");
-        else if (key === "-") append("−");
-        else if (key === "*") append("×");
-        else if (key === "/") append("÷");
-        else if (key === ".") append(".");
-        else if (key === "Enter" || key === "=") {
-            e.preventDefault();
-            calculate();
-        }
-        else if (key === "Backspace") backspace();
-        else if (key === "Escape") clearAll();
-    });
-    
+    /* ==============================
+       STEP-BY-STEP EXPLANATION (BODMAS)
+    ============================== */
     function generateSteps(exp, finalResult) {
-    if (!stepsEl) return;
+        let html = `<p><strong>Expression:</strong> ${exp}</p>`;
+        html += `<p><strong>Rule Used:</strong> BODMAS</p>`;
 
-    let explanation = `<p><strong>Expression:</strong> ${exp}</p>`;
-    explanation += `<p><strong>Rule Used:</strong> BODMAS</p>`;
+        let temp = exp.replace(/−/g, "-");
+        let step = 1;
 
-    let tempExp = exp;
-    let stepCount = 1;
+        const evalOp = (a, op, b) => {
+            a = parseFloat(a);
+            b = parseFloat(b);
+            if (op === "×") return a * b;
+            if (op === "÷") return a / b;
+            if (op === "+") return a + b;
+            if (op === "-") return a - b;
+        };
 
-    // Helper to safely evaluate a simple expression
-    const evalSimple = (a, op, b) => {
-        a = parseFloat(a);
-        b = parseFloat(b);
-        if (op === "×") return a * b;
-        if (op === "÷") return a / b;
-        if (op === "+") return a + b;
-        if (op === "−") return a - b;
-    };
+        let md = /(-?\d+\.?\d*)\s*([×÷])\s*(-?\d+\.?\d*)/;
+        while (md.test(temp)) {
+            const [full, a, op, b] = temp.match(md);
+            const value = evalOp(a, op, b);
+            html += `<p>Step ${step++}: ${a} ${op} ${b} = ${value}</p>`;
+            temp = temp.replace(full, value);
+        }
 
-    // 1️⃣ Handle multiplication & division first
-    let mdRegex = /(-?\d+\.?\d*)\s*([×÷])\s*(-?\d+\.?\d*)/;
+        let as = /(-?\d+\.?\d*)\s*([+-])\s*(-?\d+\.?\d*)/;
+        while (as.test(temp)) {
+            const [full, a, op, b] = temp.match(as);
+            const value = evalOp(a, op, b);
+            html += `<p>Step ${step++}: ${a} ${op} ${b} = ${value}</p>`;
+            temp = temp.replace(full, value);
+        }
 
-    while (mdRegex.test(tempExp)) {
-        const match = tempExp.match(mdRegex);
-        const [full, a, op, b] = match;
-        const value = evalSimple(a, op, b);
-
-        explanation += `<p>Step ${stepCount++}: ${a} ${op} ${b} = ${value}</p>`;
-        tempExp = tempExp.replace(full, value);
+        html += `<p class="final-answer">Final Answer: ${finalResult}</p>`;
+        stepsEl.innerHTML = html;
     }
 
-    // 2️⃣ Handle addition & subtraction
-    let asRegex = /(-?\d+\.?\d*)\s*([+\−])\s*(-?\d+\.?\d*)/;
+    /* ==============================
+       STEP TOGGLE BUTTON
+    ============================== */
+    toggleBtn.addEventListener("click", () => {
+        stepsVisible = !stepsVisible;
+        stepsEl.classList.toggle("hidden", !stepsVisible);
+        toggleBtn.textContent = stepsVisible ? "Hide Steps" : "Show Steps";
+    });
 
-    while (asRegex.test(tempExp)) {
-        const match = tempExp.match(asRegex);
-        const [full, a, op, b] = match;
-        const value = evalSimple(a, op, b);
+    /* ==============================
+       KEYBOARD SUPPORT
+    ============================== */
+    document.addEventListener("keydown", e => {
+        const k = e.key;
 
-        explanation += `<p>Step ${stepCount++}: ${a} ${op} ${b} = ${value}</p>`;
-        tempExp = tempExp.replace(full, value);
-    }
+        if (!isNaN(k)) append(k);
+        else if (k === "+") append("+");
+        else if (k === "-") append("−");
+        else if (k === "*") append("×");
+        else if (k === "/") append("÷");
+        else if (k === ".") append(".");
+        else if (k === "Enter") calculate();
+        else if (k === "Backspace") clearEntry();
+        else if (k === "Escape") clearAll();
+    });
 
-    explanation += `<p class="final-answer">Final Answer: ${finalResult}</p>`;
-    stepsEl.innerHTML = "";
-     setTimeout(() => {
-        stepsEl.innerHTML = explanation;
-    }, 50);
+    /* ==============================
+       DARK MODE (FIXED & VERIFIED)
+    ============================== */
+    const savedTheme = localStorage.getItem("theme");
 
-}
-let stepsVisible = false;
-
-toggleBtn.addEventListener("click", () => {
-    stepsVisible = !stepsVisible;
-
-    if (stepsVisible) {
-        stepsEl.classList.remove("hidden");
-        toggleBtn.textContent = "Hide Steps";
-    } else {
-        stepsEl.classList.add("hidden");
-        toggleBtn.textContent = "Show Steps";
-    }
-});
-
-// ==============================
-// Dark Mode Toggle
-// ==============================
-
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme === "dark") {
-    document.body.classList.add("dark");
-    themeToggle.textContent = "☀️ Light";
-}
-
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
         themeToggle.textContent = "☀️ Light";
-        localStorage.setItem("theme", "dark");
-    } else {
-        themeToggle.textContent = "🌙 Dark";
-        localStorage.setItem("theme", "light");
     }
-});
+
+    themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+
+        const isDark = document.body.classList.contains("dark");
+        themeToggle.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+
+        console.log("Dark mode toggled:", isDark);
+    });
 
 });
-
