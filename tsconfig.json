@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "types": ["vite/client"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@calc-engine": ["packages/calc-engine/src/index.ts"],
+      "@calc-engine/*": ["packages/calc-engine/src/*"],
+      "@theme": ["packages/theme/src/index.ts"],
+      "@theme/*": ["packages/theme/src/*"],
+      "@ui": ["packages/ui-components/src/index.ts"],
+      "@ui/*": ["packages/ui-components/src/*"],
+      "@format": ["packages/format/src/index.ts"],
+      "@format/*": ["packages/format/src/*"],
+      "@quantities": ["packages/quantities/src/index.ts"],
+      "@quantities/*": ["packages/quantities/src/*"]
+    }
+  },
+  "include": ["src", "packages/**/src", "packages/**/test", "vite.config.ts", "vitest.config.ts"]
+}

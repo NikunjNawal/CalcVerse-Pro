@@ -4,106 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="google-site-verification" content="AQkxEduWs8TjBG_Pb5lWbDDuYmhmEh604sMWNjmF9qk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>CalcVerse Pro - All-in-One Online Calculator Hub for Education, Health, Finance & Business</title>
-
-
+    <title>CalcVerse Pro - All-in-One Online Calculator Hub</title>
     <meta name="description" content="CalcVerse Pro provides smart, fast, and educational calculators for students, professionals, and everyday use." />
-
     <meta name="keywords" content="calculator, online calculator, educational calculator, basic calculator, math calculator" />
-
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <!-- HEADER -->
     <header class="header">
         <h1>CalcVerse Pro - All-in-One Online Calculator Hub</h1>
-        <p class="tagline"> Free calculators for education, health, finance, and business </p>
-
-        <!-- Dark Mode Toggle -->
-        <button id="themeToggle" class="theme-toggle header-toggle">
-            🌙 Dark
-        </button>
+        <p class="tagline">Free calculators for education, health, finance, and business</p>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <h2>One Platform. Many Calculators.</h2>
-        <p>
-            CalcVerse Pro helps you calculate faster and learn smarter with
-            simple explanations and accurate results.
-        </p>
+    <main class="home-main">
+        <section class="hero">
+            <h2>One Platform. Many Calculators.</h2>
+            <p>CalcVerse Pro helps you calculate faster and learn smarter with simple explanations and accurate results.</p>
+            <a href="/basic-calculator.html" class="btn-primary">Try Basic Calculator</a>
+        </section>
 
-        <a href="basic-calculator.html" class="btn-primary">
-            Try Basic Calculator
-        </a>
-    </section>
-
-    <!-- FEATURES SECTION -->
-    <section class="features">
-        <h2>Why Choose CalcVerse Pro?</h2>
-
-        <div class="feature-list">
-            <div class="feature">
-                <h3>✔ Simple & Fast</h3>
-                <p>Clean interface with instant calculations.</p>
+        <section class="features">
+            <h2>Why Choose CalcVerse Pro?</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <h3>Simple & Fast</h3>
+                    <p>Clean interface with instant calculations.</p>
+                </div>
+                <div class="feature">
+                    <h3>Educational</h3>
+                    <p>Learn how calculations work with clear explanations.</p>
+                </div>
+                <div class="feature">
+                    <h3>Multi-Category</h3>
+                    <p>Math, health, finance, business & more coming soon.</p>
+                </div>
+                <div class="feature">
+                    <h3>Free to Use</h3>
+                    <p>No sign-up required. Just calculate and learn.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="feature">
-                <h3>✔ Educational</h3>
-                <p>Learn how calculations work with clear explanations.</p>
-            </div>
+        <section class="calculators-grid" id="calculators-grid">
+        </section>
 
-            <div class="feature">
-                <h3>✔ Multi-Category</h3>
-                <p>Math, health, finance, business & more coming soon.</p>
-            </div>
+        <section class="upcoming">
+            <h2>Coming Soon</h2>
+            <ul id="coming-soon-list"></ul>
+        </section>
+    </main>
 
-            <div class="feature">
-                <h3>✔ Free to Use</h3>
-                <p>No sign-up required. Just calculate and learn.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- UPCOMING SECTION -->
-    <section class="upcoming">
-        <h2>Coming Soon</h2>
-        <ul>
-            <li>Health Calculators (BMI, Calories)</li>
-            <li>Finance Calculators (EMI, Interest)</li>
-            <li>Business Calculators (Profit, Tax)</li>
-            <li>Engineering & Student Tools</li>
-        </ul>
-    </section>
-
-    <!-- FOOTER -->
     <footer class="footer">
-        <p>© 2025 CalcVerse Pro. All rights reserved.</p>
-
+        <p>© <span id="year"></span> CalcVerse Pro. All rights reserved.</p>
         <div class="footer-links">
             <a href="#">About</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Contact</a>
         </div>
-
-        <!-- FEEDBACK -->
-        <p style="margin-top: 12px; font-size: 0.9rem;">
-            💡 Have an idea or feature request?
-            <a 
-                href="https://forms.gle/uF6Ap96m4VMfbi7m7"
-                target="_blank"
-                rel="noopener"
-            >
-                Suggest a Feature
-            </a>
+        <p class="feedback-link">
+            Have an idea or feature request?
+            <a href="https://forms.gle/uF6Ap96m4VMfbi7m7" target="_blank" rel="noopener">Suggest a Feature</a>
         </p>
     </footer>
 
-    <!-- THEME SCRIPT -->
-    <script src="js/theme.js"></script>
-
+    <script type="module" src="/src/main-index.ts"></script>
 </body>
 </html>
-

@@ -1,0 +1,132 @@
+/* ============================================================
+   CalcVerse design tokens — SINGLE source of truth for raw values.
+   Raw hex/rgba is allowed in THIS FILE ONLY (stylelint-enforced).
+   All component styles must consume semantic tokens from here.
+   Tiers: primitive (--cv-*) → semantic (--color-*, --text-*…) → scoped.
+   ============================================================ */
+
+:root {
+  --color-bg: #f9fafb;
+  --color-bg-elevated: #ffffff;
+  --color-text: #1f2933;
+  --color-text-muted: #6b7280;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-light: #dbeafe;
+  --color-primary-text: #1e40af;
+  --color-danger: #ef4444;
+  --color-danger-light: #fee2e2;
+  --color-danger-text: #991b1b;
+  --color-success: #22c55e;
+  --color-success-light: #dcfce7;
+  --color-success-text: #166534;
+  --color-warning: #f59e0b;
+  --color-warning-light: #fef3c7;
+  --color-warning-text: #92400e;
+  --color-info: #06b6d4;
+  --color-info-light: #e0f2fe;
+  --color-info-text: #075985;
+  --color-border: #e5e7eb;
+  --color-shadow: rgba(0, 0, 0, 0.08);
+  --color-shadow-strong: rgba(0, 0, 0, 0.12);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+
+  --header-height: 80px;
+  --sidebar-width: 350px;
+
+  --z-dropdown: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+
+  /* ── Typography scale (V2) ─────────────────────────────── */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-display: clamp(2.25rem, 5vw, 3.5rem);
+  --leading-body: 1.6;
+  --leading-tight: 1.15;
+
+  /* ── Motion (V2) ───────────────────────────────────────── */
+  --dur-instant: 80ms;
+  --dur-fast: 160ms;
+  --dur-normal: 240ms;
+  --dur-slow: 400ms;
+  --dur-ambient: 1200ms;
+  --ease-out-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Elevation (V2) ────────────────────────────────────── */
+  --elevation-1: 0 1px 2px rgb(0 0 0 / 0.06), 0 1px 3px rgb(0 0 0 / 0.08);
+  --elevation-2: 0 4px 12px rgb(0 0 0 / 0.1);
+  --elevation-3: 0 12px 32px rgb(0 0 0 / 0.16);
+
+  /* ── Breakpoints (documentation tokens; media queries are static) ── */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+
+  /* ── Domain accent infrastructure (V4 implements per-domain values) ──
+     Default scope maps domain accents onto the global primary.
+     Usage: <body data-domain="physics"> overrides these four tokens.
+     Domains may ONLY override: accent, accent-hover, accent-subtle,
+     accent-on, domain-motif, domain-icon. Nothing else.                  */
+  --domain-accent: var(--color-primary);
+  --domain-accent-hover: var(--color-primary-hover);
+  --domain-accent-subtle: var(--color-primary-light);
+  --domain-accent-on: #ffffff;
+}
+
+.dark {
+  --color-bg: #0f172a;
+  --color-bg-elevated: #1e293b;
+  --color-text: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #60a5fa;
+  --color-primary-light: #1e3a8a;
+  --color-primary-text: #93c5fd;
+  --color-danger: #f87171;
+  --color-danger-light: #450a0a;
+  --color-danger-text: #fecaca;
+  --color-success: #4ade80;
+  --color-success-light: #052e16;
+  --color-success-text: #86efac;
+  --color-warning: #fbbf24;
+  --color-warning-light: #451a03;
+  --color-warning-text: var(--color-warning);
+  --color-info: #22d3ee;
+  --color-info-light: #0c2d3e;
+  --color-info-text: #67e8f9;
+  --color-border: #334155;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-strong: rgba(0, 0, 0, 0.5);
+
+  /* Dark-mode domain accents default to the dark primary ramp (V4 refines). */
+  --domain-accent: var(--color-primary);
+  --domain-accent-hover: var(--color-primary-hover);
+  --domain-accent-subtle: var(--color-primary-light);
+  --domain-accent-on: #0f172a;
+}

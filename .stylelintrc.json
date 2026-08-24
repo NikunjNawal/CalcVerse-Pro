@@ -1,0 +1,37 @@
+{
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "ignoreFiles": [
+    "dist/**",
+    "node_modules/**"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "src/styles/tokens.css"
+      ],
+      "rules": {
+        "color-no-hex": null,
+        "color-function-notation": null,
+        "alpha-value-notation": null,
+        "color-hex-length": null,
+        "custom-property-empty-line-before": null
+      }
+    },
+    {
+      "files": [
+        "src/styles/main.css"
+      ],
+      "rules": {
+        "no-duplicate-selectors": null,
+        "no-descending-specificity": null
+      }
+    }
+  ],
+  "rules": {
+    "color-no-hex": true,
+    "function-no-unknown": null,
+    "selector-class-pattern": "^([a-z][a-z0-9]*)(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$"
+  }
+}
