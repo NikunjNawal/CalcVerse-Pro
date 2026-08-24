@@ -1,73 +1,145 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="google-site-verification" content="AQkxEduWs8TjBG_Pb5lWbDDuYmhmEh604sMWNjmF9qk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CalcVerse Pro - All-in-One Online Calculator Hub</title>
-    <meta name="description" content="CalcVerse Pro provides smart, fast, and educational calculators for students, professionals, and everyday use." />
-    <meta name="keywords" content="calculator, online calculator, educational calculator, basic calculator, math calculator" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header class="header">
-        <h1>CalcVerse Pro - All-in-One Online Calculator Hub</h1>
-        <p class="tagline">Free calculators for education, health, finance, and business</p>
+    <title>CalcVerse Pro — Every calculation. One universe.</title>
+    <meta
+      name="description"
+      content="CalcVerse is a universe of specialized calculators: math, finance, health, physics, conversion and more — accurate, explained, and free."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="cv-header">
+      <div class="cv-header__inner">
+        <a class="brand" href="/" aria-label="CalcVerse home">
+          <span class="brand__mark" aria-hidden="true">=</span>
+          <span class="brand__name">CalcVerse</span>
+        </a>
+        <nav class="cv-nav" aria-label="Primary">
+          <a href="#domains">Categories</a>
+          <a href="#calculators">Calculators</a>
+          <a href="#why">Why CalcVerse</a>
+        </nav>
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+        ></button>
+      </div>
     </header>
 
-    <main class="home-main">
-        <section class="hero">
-            <h2>One Platform. Many Calculators.</h2>
-            <p>CalcVerse Pro helps you calculate faster and learn smarter with simple explanations and accurate results.</p>
-            <a href="/basic-calculator.html" class="btn-primary">Try Basic Calculator</a>
-        </section>
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero-v3" aria-labelledby="hero-title">
+        <p class="hero-v3__eyebrow">A universe of specialized calculators</p>
+        <h2 id="hero-title" class="hero-v3__title">Every calculation.<br />One universe.</h2>
+        <p class="hero-v3__sub">
+          Accurate results, clear step-by-step explanations, and specialized tools for math,
+          finance, health, science and everyday life — all in one place.
+        </p>
 
-        <section class="features">
-            <h2>Why Choose CalcVerse Pro?</h2>
-            <div class="feature-list">
-                <div class="feature">
-                    <h3>Simple & Fast</h3>
-                    <p>Clean interface with instant calculations.</p>
-                </div>
-                <div class="feature">
-                    <h3>Educational</h3>
-                    <p>Learn how calculations work with clear explanations.</p>
-                </div>
-                <div class="feature">
-                    <h3>Multi-Category</h3>
-                    <p>Math, health, finance, business & more coming soon.</p>
-                </div>
-                <div class="feature">
-                    <h3>Free to Use</h3>
-                    <p>No sign-up required. Just calculate and learn.</p>
-                </div>
-            </div>
-        </section>
+        <!-- ASK / SEARCH -->
+        <div id="ask-search" class="ask"></div>
 
-        <section class="calculators-grid" id="calculators-grid">
-        </section>
+        <div class="hero-v3__actions">
+          <a class="btn-primary" href="#calculators">Browse calculators</a>
+          <a class="btn-secondary-link" href="#domains">Explore by domain</a>
+        </div>
+      </section>
 
-        <section class="upcoming">
-            <h2>Coming Soon</h2>
-            <ul id="coming-soon-list"></ul>
-        </section>
+      <!-- DOMAIN DISCOVERY RAIL -->
+      <section id="domains" class="section" aria-labelledby="domains-title">
+        <h2 id="domains-title" class="section__title">Explore by domain</h2>
+        <p class="section__sub">Each domain gets its own identity inside one coherent CalcVerse.</p>
+        <div id="domain-rail"></div>
+      </section>
+
+      <!-- FEATURED BENTO -->
+      <section id="calculators" class="section" aria-labelledby="calc-title">
+        <h2 id="calc-title" class="section__title">Calculators</h2>
+        <p class="section__sub">Start with the most-used tools. New domains arrive continuously.</p>
+        <div id="featured-bento"></div>
+        <noscript>
+          <p class="noscript-note">
+            The Basic Calculator is available at
+            <a href="/calculators/basic.html">/calculators/basic.html</a>. Enable JavaScript for
+            search and the full catalog experience.
+          </p>
+        </noscript>
+      </section>
+
+      <!-- COMING SOON / EXPLORATION -->
+      <section class="section section--soon" aria-labelledby="soon-title">
+        <h2 id="soon-title" class="section__title">On the horizon</h2>
+        <p class="section__sub">Specialized calculators currently in design.</p>
+        <div id="coming-soon-chips"></div>
+      </section>
+
+      <!-- PLATFORM BENEFITS -->
+      <section id="why" class="section" aria-labelledby="why-title">
+        <h2 id="why-title" class="section__title">Why CalcVerse</h2>
+        <div class="benefit-list">
+          <div class="benefit">
+            <h3>Accurate</h3>
+            <p>Decimal-based computation — no floating-point surprises in your results.</p>
+          </div>
+          <div class="benefit">
+            <h3>Explained</h3>
+            <p>Step-by-step derivations show how each answer was reached.</p>
+          </div>
+          <div class="benefit">
+            <h3>Private</h3>
+            <p>Calculations run entirely in your browser. No accounts, no tracking of inputs.</p>
+          </div>
+          <div class="benefit">
+            <h3>Specialized</h3>
+            <p>Purpose-built tools per domain — not one generic calculator stretched thin.</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
-        <p>© <span id="year"></span> CalcVerse Pro. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="#">About</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Contact</a>
+      <div class="footer__inner">
+        <div class="footer__col footer__brand">
+          <span class="brand"><span class="brand__mark" aria-hidden="true">=</span> CalcVerse</span>
+          <p>A universe of specialized calculators. Built to explain, not just compute.</p>
         </div>
-        <p class="feedback-link">
-            Have an idea or feature request?
-            <a href="https://forms.gle/uF6Ap96m4VMfbi7m7" target="_blank" rel="noopener">Suggest a Feature</a>
-        </p>
+        <nav class="footer__col" aria-label="Popular">
+          <h3>Popular</h3>
+          <a href="/calculators/basic.html">Basic Calculator</a>
+        </nav>
+        <nav class="footer__col" aria-label="Planned">
+          <h3>Planned</h3>
+          <span>Unit Converter</span>
+          <span>BMI Calculator</span>
+          <span>Compound Interest</span>
+          <span>Loan EMI</span>
+        </nav>
+        <div class="footer__col">
+          <h3>Project</h3>
+          <a href="https://github.com/NikunjNawal/CalcVerse-Pro" target="_blank" rel="noopener"
+            >GitHub</a
+          >
+          <a href="https://forms.gle/uF6Ap96m4VMfbi7m7" target="_blank" rel="noopener"
+            >Suggest a feature</a
+          >
+        </div>
+      </div>
+      <p class="footer__legal">© <span id="year"></span> CalcVerse Pro. All rights reserved.</p>
     </footer>
 
     <script type="module" src="/src/main-index.ts"></script>
-</body>
+  </body>
 </html>

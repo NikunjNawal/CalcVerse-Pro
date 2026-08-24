@@ -7,3 +7,4 @@ export * from './icons';
 export * from './Icon';
 export * from './StatePrimitives';
 export * from './ResultCard';
+export * from './SearchBox';
